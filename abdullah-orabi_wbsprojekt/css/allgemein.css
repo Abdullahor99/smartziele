@@ -1,0 +1,115 @@
+
+
+:root {
+  /* farben */
+  --color1: #0080b3;
+  --color2: #00b39a;
+  --color3: #f8c500;
+  --color4: #ff9200;
+  --Black: #111;
+  --white: rgb(252, 252, 252);
+}
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  font-size: 62.5%;
+  line-height: 1.5em;
+}
+
+body {
+  font-size: 160%;
+}
+.page {
+  width: min(100%, 120rem);
+  margin-inline: auto;
+}
+
+header {
+  background-color: var(--color1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+}
+
+.logo,
+.logobild{
+  height: 20rem;
+  width: 20rem;
+}
+.logobild
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color2);
+  line-height: 3rem
+}
+
+img {
+  display: inline-block;
+}
+nav {
+  display: inline-block;
+  height: 3rem;
+  align-self: flex-end;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  display: block;
+  text-decoration: none;
+}
+nav ul li {
+  border-left: var(--Black) solid 0.2rem;
+  color: var(--Black);
+  font-size: 2.5rem;
+  line-height: 3rem;
+  text-align: center;
+}
+nav ul li:hover,
+nav ul li:focus-within{
+  transform: translatex(0.1rem);
+}
+nav ul li a {
+  text-align: center;
+  color: inherit;
+}
+
+.footer{
+  position: relative;
+  margin-top: 2.6rem;
+  background-color: var(--color2);
+  height: 6rem;
+  border-radius: 1rem;
+}
+.footer_Text{
+  position: relative;
+  text-align: center;
+  line-height: 6rem; 
+}
+.footer .footer_impressum{
+  font-size: large;
+  margin: auto 0;
+  left: 80%;
+  color: var(--Black);
+  text-decoration: underline;
+}
+
+.active{
+  color: var(--white);
+  border-left: var(--white) solid 0.2rem;
+}

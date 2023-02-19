@@ -1,0 +1,85 @@
+.ziele{
+  margin: 2.6rem 0;
+  min-height: 20rem;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px 3px #dddddd;
+}
+
+.ziele_bild{
+  margin-right: 3rem;
+  height: 15rem;
+  width: 15rem;
+  border-radius: 50%;
+  shape-outside: circle();
+}
+.ziele_text{
+  line-height: 2rem;
+  font-size: 2rem;
+  padding: 0.8rem;
+}
+.ziele_h2{
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.smartziele{
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px 3px #dddddd;
+  min-height: 30rem;
+}
+
+.smartziele_bild{
+  margin-right: 3rem;
+  height: 25rem;
+  width: 50rem;
+}
+.smartziele_text{
+  margin-top: 4rem;
+  line-height: 2rem;
+  font-size: 2rem;
+  padding: 0.8rem;
+  /* width: 100%; */
+}
+.smartziele_h2{
+  text-align: center;
+  padding-top: 1rem;
+}
+.anleitung{
+  margin: 2.6rem 0;
+  min-height: 6rem;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px 3px #dddddd;
+}
+.anleitung__button{
+  height: 4rem;
+  line-height: 4rem;
+  width: 15rem;
+  background-color: var(--color3);
+  margin: 1rem;
+  border-radius: 1rem;
+  position: relative;
+  color: var(--Black);
+  box-shadow: 1px 1px 3px #dddddd;
+  text-align: center;
+  float: right;
+}
+.anleitung__button:hover{
+  box-shadow: 2px 2px 3px #dddddd;
+}
+.anleitung-text{
+  width: 70%;
+  /* float: left; */
+}
+.anleitung_cont{
+  position: relative;
+}
+@media(max-width: 900px ){
+  .smartziele_content,
+  .anleitung{
+    flex-direction: column;
+  }
+  .smartziele_bild,
+  .anleitung_cont{
+    width: 100%;
+  }
+}
