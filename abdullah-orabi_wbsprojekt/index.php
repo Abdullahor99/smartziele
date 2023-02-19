@@ -14,18 +14,23 @@
 <body>
   <div class="page">
     <header class="flex"> 
-      <div class="logo mar-r-16">
+      <div class="logo mar-r-16 flexitem">
       <a href="index.php"><img class="logobild" src="img/logo.png" alt="logo"></a>
       </div>
-  
-    <nav>
-      <ul class="clearfix">
-        <li class="fl-l pad-l-16 mar-r-16 active"><a href="index.php">Intro</a></li>
-        <li class="fl-l pad-l-16 mar-r-16"><a href="php/tutorial.php">Tutorial</a></li>
-        <li class="fl-l pad-l-16 mar-r-16"><a href="php/dashboard.php">Dashboard</a></li>
-        <li class="fl-l pad-l-16 mar-r-16"><a href="php/goalssetting.php">Ziele Einstellung</a></li>
-      </ul>
-    </nav>
+      <nav class="flexitem">
+        <ul class="clearfix">
+          <li class="fl-l pad-l-16 mar-r-16 active"><a href="index.php">Intro</a></li>
+          <li class="fl-l pad-l-16 mar-r-16"><a href="php/tutorial.php">Tutorial</a></li>
+          <li class="fl-l pad-l-16"><a href="php/dashboard.php">Dashboard</a></li>
+          <li class="fl-l pad-l-16"><a href="php/goalssetting.php">Ziele Einstellung</a></li>
+        </ul>
+      </nav>
+      <div class="flexitem reg-log">
+        <div class="reg-log-con">
+          <a class="reg mar-r-16" href="php/registrieren.php">Registrieren</a>
+          <a class="log mar-r-16 " href="php/login.php">Login</a>
+        </div>
+      </div>
   </header>
   <main>
     <div class="ziele">
@@ -55,4 +60,8 @@
         <a class="anleitung__button" href="#">Tutorial</a>
       </div>
     </div>
+    <footer class="footer">
+      <p class="footer_Text"> Devloped with 🖤</p>
+      <a class="footer_impressum mar-r-16 center-y"href="html/impressum.html">impressum</a>
+    </footer>
   </main>
