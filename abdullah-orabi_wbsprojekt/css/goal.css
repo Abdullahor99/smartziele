@@ -1,0 +1,202 @@
+.goal-form-cont,
+.milestone-form-cont{
+  position: absolute;
+  background-color: rgba(0,0,0,0.5); 
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+/* .milestone-form-cont{
+  display: block;
+} */
+
+.addgoal-button{
+  float: right;
+  color: var(--white);
+  margin: 1rem;
+  background-color: var(--color2);
+  border-radius: 1rem;
+  height: 3rem;
+  line-height: 3rem;
+  width: 10rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.goal-form-inputs-cont,
+.milestone-form-inputs-cont{
+  margin-top: 2rem;
+}
+
+.goal-form,
+.milestone-form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 50rem;
+  margin: 0 auto;
+  padding: 2rem;
+  border: 0.2rem solid #ccc;
+  border-radius: 1rem;
+  background-color: #f9f9f9;
+}
+.goal-label
+.milestone-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+.goal-input,
+.milestone-input{
+  width: 100%;
+  padding: 0.8rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  margin-bottom: 2rem;
+  font-size: 1.6rem;
+}
+.goal-submit,
+.milestone-submit{
+  background-color:var(--color2);
+  color: var(--white);
+  padding: 1.2rem 2rem;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+.goal-submit:hover,
+.goal-submit:focus-within,
+.addgoal-button:hover,
+.addgoal-button:focus-within,
+.addmilestone-button:hover,
+.addmilestone-button:focus-within,
+.milestone-submit:hover,
+.milestone-submit:focus-within   {
+  background-color: #053d36;
+}
+
+.goal-close,
+.milestone-close{
+  color: red;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  scale: 3.3;
+}
+
+.addmilestone-button{
+  color: var(--white);
+  margin: 2rem 2rem;
+  background-color: var(--color2);
+  border-radius: 1rem;
+  height: 3rem;
+  line-height: 3rem;
+  width: 20rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+}
+
+.goal-cont{
+  max-width: 55rem;
+  margin: 2.6rem 1.6rem;
+  /* height: 20rem; */
+  min-height: 10rem;
+  border-radius: 4rem;
+  box-shadow: 0.3rem 0.3rem 1rem 0.3rem #dddddd;
+}
+.plus{
+  margin-left:1rem;
+}
+
+.goal-logo-cont{
+  position: relative;
+  width: 20%;
+  /* background: red; */
+}
+.goal-startend-date-cont{
+  width: 50%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.goal-start-date,
+.goal-end-date{
+  border-radius: 1rem;
+  height: 3rem;
+  width: 20rem;
+  line-height: 3rem;
+  text-align: center;
+  margin: 1rem;
+}
+.recht-pfeil{
+  scale: 1.3;
+  margin: 1rem;
+  height: 3rem;
+  line-height: 3rem;
+}
+.goal-start-date{
+  background: rgb(126, 223, 126);
+}
+.goal-end-date{
+  background: rgb(230, 164, 164);
+}
+.goal-logo{
+  /* float: right; */
+  position: absolute;
+  top: 1.8rem;
+  right: 3rem;
+  scale: 2.7;
+  color: var(--white);
+  background: red;
+  border-radius: 100%;
+  z-index: -1;
+  box-shadow: 0.3rem 0.3rem 1rem 0.3rem #dddddd;
+}
+.goal-name{
+  margin: 1rem 0 2rem 2rem;
+  width: 30%;
+}
+
+.goal-progress-cont{
+  text-align: center;
+  margin: 1rem;
+}
+progress[value] {
+	/* Add dimensions */
+  width: 80%;
+	height: 2rem;
+}
+
+.milestone-cont{
+  margin: 1rem;
+  border-radius: 2rem;
+  box-shadow: 0.3rem 0.3rem 1rem 0.3rem #dddddd;
+  background-color: var(--color3);
+}
+.milestone-start-date,
+.milestone-end-date{
+  margin: 0.4rem 1rem 0rem 1rem;
+  display: inline-block;
+}
+.milestone-name{
+  margin: 0.3rem 1rem;
+  width: 90%;
+}
+
+.checkbox-form{
+  width: 10%;
+  position: relative;
+}
+
+.checkbox{
+  text-align: center;
+  /* margin: 1rem; */
+}

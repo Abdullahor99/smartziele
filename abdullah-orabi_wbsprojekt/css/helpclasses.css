@@ -17,6 +17,10 @@
   padding-right: 1.6rem;
 }
 
+
+.hidden-ele{
+  display: none;
+}
 /* ! Flexbox hilfsklassen */
 /* Klassen für Felxcontanier  */
 .flex {

@@ -1,4 +1,34 @@
+<?php
+session_start();
+require '../db/ConnectDB.php';
+require '../requests/RegisterTheUserREQ.php';
+require '../DB_CRUD/TheUserCRUD.PHP';
+require '../helper/helper.php';
 
+$db = connectToDatabase();
+
+$errors= [];
+$action = $_POST["action"] ?? '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
+{
+  //Register Form
+  if($action === 'register')
+  {
+    $callback = handleRegisterRequest($db);
+    if (isset($callback['user_name']) && isset($callback['user_id']))
+    {
+      $ok = true;
+      loginUser($callback);
+    }
+    if ($action === 'logout')
+    {
+      session_unset();
+      session_destroy();
+    }
+  }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="de">
@@ -15,7 +45,7 @@
 </head>
 <body>
   <div class="page">
-    <header class="flex"> 
+    <header class="flex main-header"> 
       <div class="logo mar-r-16 flexitem">
         <a href="index.php"><img class="logobild" src="../img/logo.png" alt="logo"></a>
       </div>
@@ -33,30 +63,80 @@
         </ul>
       </nav>
       <div class="flexitem reg-log">
-        <div class="reg-log-con">
-          <a class="reg mar-r-16" href="registrieren.php">Registrieren</a>
-          <a class="log mar-r-16 " href="login.php">Login</a>
+        <div class="log-con">
+          <?php if(!IsUserLoggedIN()) : ?>
+            <a class="log-icon mar-r-16" href="registrieren.php">Registrieren</a>
+            <a class="log-icon mar-r-16 " href="login.php">Login</a>
+          <?php endif ?>
+          <?php if(IsUserLoggedIN()) : ?>
+            <div>
+              <form action="" method="post">
+                <button class="log-icon"type="submit" name="action" value="logout">Abmelden</button>
+              </form>
+            </div>
+          <?php endif ?>
         </div>
       </div>
 
     </header>
     <main>
       <h1 class="h1">Registrieren</h1>
-      <form>
+      <form action="" method="post">
+        <!-- ############NAME############# -->
         <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-  
+        <input type="text" id="name" name="name" >
+
+        <?php if (isset($callback['name_error'])) : ?>
+          <div class="alert">
+            <?= $callback['name_error'] ?>
+          </div>
+        <?php endif; ?>
+        <!-- ############VORNAME############# -->
         <label for="vorname">Vorname:</label>
-        <input type="text" id="vorname" name="vorname" required>
-  
+        <input type="text" id="vorname" name="vorname" >
+
+        <?php if (isset($callback['vorname_error'])) : ?>
+          <div class="alert">
+            <?= $callback['vorname_error'] ?>
+          </div>
+        <?php endif; ?>
+        <!-- ############E-Mail############# -->  
         <label for="email">E-Mail-Adresse:</label>
-        <input type="email" id="email" name="email" required>
-  
+        <input type="email" id="email" name="email" >
+
+        <?php if (isset($callback['email_error'])) : ?>
+          <div class="alert">
+            <?= $callback['email_error'] ?>
+          </div>
+        <?php endif; ?>
+        <!-- ############PASSWORD############# --> 
         <label for="password">Passwort:</label>
-        <input type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}" required>
+        <input type="password" id="password" name="password" >
+
+        <?php if (isset($callback['password_error'])) : ?>
+          <div class="alert">
+            <?= $callback['password_error'] ?>
+          </div>
+        <?php endif; ?>
+        <!-- ############PASSWORDCONFIRM############# -->
         <label for="password-confirm">Passwort bestätigen:</label>
-        <input type="password" id="password-confirm" name="password-confirm" required>
-        <button type="submit">Registrieren</button>
+        <input type="password" id="password-confirm" name="password-confirm">
+
+        <?php if (isset($callback['password_error'])) : ?>
+          <div class="alert">
+            <?= $callback['password_error'] ?>
+          </div>
+        <?php endif; ?>
+
+        <!-- ############submit############# -->
+        <button class="submit-button" type="submit" name="action" value="register">Registrieren</button>
+
+        <?php if (isset($ok)) : ?>
+          <div class="alert">
+            Du hast dich erfolgreich registriert!
+          </div>
+        <?php endif; ?>
+
     </form>
 
     </main>

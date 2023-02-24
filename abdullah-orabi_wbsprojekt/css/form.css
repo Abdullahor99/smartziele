@@ -13,18 +13,23 @@ input {
 }
 label {
   display: block;
-  margin-bottom: 0.5px;
+  margin-bottom: 1rem;
   font-weight: bold;
 }
-button {
+.submit-button {
   padding: 1rem;
   background-color: var(--color2);
   color: var(--Black);
   border: none;
-  border-radius: 0.4rem;
+  border-radius: 1rem;
   font-size: 1.6rem;
   cursor: pointer;
+  width: 100%;
 }
-button:hover {
+.submit-button:hover {
   background-color: #058e7c;
+}
+.alert{
+  color: red;
+  margin: 1.6rem;
 }
