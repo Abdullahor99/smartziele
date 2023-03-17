@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
   <div class="page">
     <header class="flex main-header"> 
       <div class="logo mar-r-16 flexitem">
-        <a href="index.php"><img class="logobild" src="../img/logo.png" alt="logo"></a>
+        <a href="../index.php""><img class="logobild" src="../img/logo.png" alt="logo"></a>
       </div>
   
       <nav class="flexitem">
@@ -56,10 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
             <a href="../index.php">Intro</a></li>
           <li class="fl-l pad-l-16 mar-r-16">
             <a href="tutorial.php">Tutorial</a></li>
-          <li class="fl-l pad-l-16 mar-r-16">
-            <a href="dashboard.php">Dashboard</a></li>
-          <li class="fl-l pad-l-16 mar-r-16">
-            <a href="goalssetting.php">Ziele Einstellung</a></li>
+          <?php if(IsUserLoggedIN()) : ?> 
+            <li class="fl-l pad-l-16 mar-r-16">
+              <a href="dashboard.php">Dashboard</a></li>
+            <li class="fl-l pad-l-16 mar-r-16">
+              <a href="goalssetting.php">Ziele Einstellung</a></li>
+          <?php endif ?>
         </ul>
       </nav>
       <div class="flexitem reg-log">

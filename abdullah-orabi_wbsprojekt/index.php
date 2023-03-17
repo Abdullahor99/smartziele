@@ -36,8 +36,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
         <ul class="clearfix">
           <li class="fl-l pad-l-16 mar-r-16 active"><a href="index.php">Intro</a></li>
           <li class="fl-l pad-l-16 mar-r-16"><a href="php/tutorial.php">Tutorial</a></li>
-          <li class="fl-l pad-l-16"><a href="php/dashboard.php">Dashboard</a></li>
-          <li class="fl-l pad-l-16"><a href="php/goalssetting.php">Ziele Einstellung</a></li>
+          <?php if(IsUserLoggedIN()) : ?>
+            <li class="fl-l pad-l-16"><a href="php/dashboard.php">Dashboard</a></li>
+            <li class="fl-l pad-l-16"><a href="php/goalssetting.php">Ziele Einstellung</a></li>
+          <?php endif ?>
         </ul>
       </nav>
       <div class="flexitem reg-log">

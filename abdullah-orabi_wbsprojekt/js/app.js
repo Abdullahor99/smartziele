@@ -26,21 +26,36 @@ goalformCont.addEventListener('click', function (event) {
     goalformCont.style.display = 'none';
   }
 });
+
+//wenn man auf X Button klickt soll Die Form verschwinde
+
+let Xbut = document.querySelector(".goal-close");
+Xbut.addEventListener('click', function(){
+  goalformCont.style.display = 'none';
+});
 //########################################################
 
 // wenn man auf neu Meilenstein Button klickt soll Meilenstein anlegen form angezeigt werden. 
 // wenn man außerhalb klickt soll die Form verschwidnen.
-const addMilestonebtn = document.querySelector(".addmilestone-button");
+const addMilestonebtns = document.querySelectorAll(".addmilestone-button");
 const milestoneform = document.querySelector(".milestone-form");
 const milestoneFormCont = document.querySelector(".milestone-form-cont");
 
-addMilestonebtn.addEventListener("click", function () {
-  milestoneFormCont.style.display = "block";
-});
+addMilestonebtns.forEach((addMilestonebtn) => {
+  addMilestonebtn.addEventListener("click", function () {
+    milestoneFormCont.style.display = "block";
+  });
+})
+
 
 milestoneFormCont.addEventListener('click', function (event) {
   if (!milestoneform.contains(event.target)) {
     milestoneFormCont.style.display = 'none';
   }
+});
+
+Xbut = document.querySelector(".milestone-close");
+Xbut.addEventListener('click', function(){
+  milestoneFormCont.style.display = 'none';
 });
 //########################################################

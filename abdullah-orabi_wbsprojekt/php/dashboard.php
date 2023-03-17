@@ -1,8 +1,32 @@
 <?php
+require '../db/ConnectDB.php';
 require '../helper/helper.php';
-session_start();
+require '../DB_CRUD/TheGoalCRUD.php';
+require '../DB_CRUD/TheMilestoneCRUD.php';
 
+session_start();
+$db = connectToDatabase();
 $action = $_POST["action"] ?? '';
+
+$totalGoals = getGoalsFromDB($db);
+$doneGoals = 0;
+if(count($totalGoals) >= 1)
+{
+  foreach($totalGoals as $goal)
+  if($goal['progress'] >= 100)
+    $doneGoals++;
+}
+
+$totalMilestones = getMilestonesFromDB($db);
+$doneMilestones = 0;
+if(count($totalMilestones) >= 1)
+{
+  foreach($totalMilestones as $Milestone)
+  if($Milestone['done'] == 1)
+    $doneMilestones++;
+}
+
+  
 if ($_SERVER['REQUEST_METHOD'] === 'POST')
 {
   if ($action === 'logout')
@@ -24,12 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/allgemein.css">
   <link rel="stylesheet" href="../css/helpclasses.css">
+  <link rel="stylesheet" href="../css/dashbord.css">
+
 </head>
 <body>
   <div class="page">
     <header class="flex main-header"> 
       <div class="logo mar-r-16 flexitem">
-        <a href="index.php"><img class="logobild" src="../img/logo.png" alt="logo"></a>
+        <a href="../index.php""><img class="logobild" src="../img/logo.png" alt="logo"></a>
       </div>
   
       <nav class="flexitem">
@@ -40,12 +66,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
           <li class="fl-l pad-l-16 mar-r-16">
             <a href="tutorial.php">Tutorial</a>
           </li>
-          <li class="fl-l pad-l-16 mar-r-16 active">
-            <a href="dashboard.php">Dashboard</a>
-          </li>
-          <li class="fl-l pad-l-16 mar-r-16">
-            <a href="goalssetting.php">Ziele Einstellung</a>
-          </li>
+          <?php if(IsUserLoggedIN()) : ?>
+            <li class="fl-l pad-l-16 mar-r-16 active">
+              <a href="dashboard.php">Dashboard</a>
+            </li>
+            <li class="fl-l pad-l-16 mar-r-16">
+              <a href="goalssetting.php">Ziele Einstellung</a>
+            </li>
+          <?php endif ?>
         </ul>
       </nav>
       <div class="flexitem reg-log">
@@ -66,7 +94,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
 
     </header>
     <main>
-      <h1>dashh</h1>
+      <h1 class="h1">Dashboard</h1>
+      <div class="container">
+        <div class="box">
+          <h2>Ziele Anzahl</h2>
+          <p><?= isset($totalGoals) ? count($totalGoals) : 0 ?></p>
+        </div>
+        <div class="box">
+          <h2>Fertige Ziele</h2>
+          <p><?=  $doneGoals ?></p>
+        </div>
+        <div class="box">
+          <h2>Meilensteine Anzahl</h2>
+          <p><?= isset($totalMilestones) ? count($totalMilestones) : 0 ?></p>
+        </div>
+        <div class="box">
+          <h2>Fertige Meilensteine</h2>
+          <p><?=  $doneMilestones ?></p>
+        </div>
+      </div>
 
     </main>
     <footer class="footer">

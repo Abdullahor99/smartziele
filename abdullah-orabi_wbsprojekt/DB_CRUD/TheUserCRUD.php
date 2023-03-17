@@ -3,13 +3,13 @@ function createUser($db, $vorname,$name, $email, $password)
 {
     $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO user (vorname, name, email, password) VALUES ( :user_vorname, :user_name, :user_email, :user_password)";
+    $sql = "INSERT INTO user (firstname, lastname, email, password) VALUES ( :user_firstname, :user_lastname, :user_email, :user_password)";
 
     $stmt = $db->prepare($sql);
 
     $result = $stmt->execute([
-        ':user_vorname' => $vorname,
-        ':user_name' => $name,
+        ':user_firstname' => $vorname,
+        ':user_lastname' => $name,
         ':user_email' => $email,
         ':user_password' => $password_hash
     ]);
@@ -46,17 +46,19 @@ function getUserByID($db, $user_id)
         ':user_id' => $user_id,
     ]);
     $user = $stmt->fetch();
-  
     return $user;
 }
 
 
 function loginUser($callback)
 {
-  // session_start();
+  session_start();
+  session_unset();
   $_SESSION['user_id'] = $callback['user_id'];
-  $_SESSION['user_name'] =  $callback['user_name'];
+  $_SESSION['user_name'] =  $callback['user_firstname'];
   $_SESSION['user_email'] = $callback['user_email'];
-
+  echo "<pre>";
+  print_r($_SESSION);
+  echo "</pre>";
   Redirect('../php/goalssetting.php', false);
 }

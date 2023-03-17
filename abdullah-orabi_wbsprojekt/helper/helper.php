@@ -12,27 +12,18 @@ function IsUserLoggedIN()
 }
 
 //Date validation 
-function validateDate($startDate, $endDate, &$errors)
+function validateDate($startDate, $endDate, &$error)
 {
-  // Darf nicht leer gelasssen werden
-  if($startDate == '')
-    $errors['startdate-error'] = "Start Datum darf nicht leer gelassen werden";
-
-  if($endDate == '')
-    $errors['enddate-error'] = "End Datum darf nicht leer gelassen werden";
-
   // Der Start sowie der End Datum sollen nicht im Vergangenheit legen
-
   $startDateUnix = strtotime($startDate);
   $endDateUnix = strtotime($endDate);
   $currentTime = time();
 
-  if($currentTime > $startDateUnix)
-    $errors['startdate-error'] = "Start Datum kann nicht im Vergangenheit legen";
-  if($currentTime > $endDateUnix)
-    $errors['enddate-error'] = "End Datum kann nicht im Vergangenheit legen";
+  if($currentTime > $startDateUnix ||
+    $currentTime > $endDateUnix)
+      $error = true;
 
   // End Datum darf niht vor StartDatum sein
   if($startDateUnix > $endDateUnix)
-    $errors['enddate-error'] = "End Datum liegt vor das Start Datum";
+    $error = true;
 }
